@@ -46,8 +46,8 @@ public class MessagePopUps {
        Scanner scnr = new Scanner(System.in);  // Create a Scanner object
    
            
-       String[] message = {"New deals here!", "Document update required", "Don't forget about", "New assignment posted"};
-       String[] mediaPlatform = {"Outlook", "Canvas", "Outlook", "Canvas"};
+       //String[] message = {"New deals here!", "Document update required", "Don't forget about", "New assignment posted"};
+       //String[] mediaPlatform = {"Outlook", "Canvas", "Outlook", "Canvas"};
    
        String userInput = "y"; // initialize
    
