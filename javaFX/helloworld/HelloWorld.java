@@ -18,13 +18,20 @@ public class HelloWorld extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Hello World!");
         Button btn = new Button();
+        //btn.setMinWidth(100);
+        btn.setMaxWidth(200);
+        btn.setMaxHeight(50);
+        
         btn.setText("Say 'Hello World'");
         btn.setOnAction(new EventHandler<ActionEvent>() {
  
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Hello World!");
+                btn.setMaxHeight(200);
+                btn.setMaxWidth(200);
                 btn.setText("Okay, I get it....");
+                
                 try {
 			         //System.out.println("Opening notepad");
                   String fileNameType = "null";   
@@ -39,10 +46,10 @@ public class HelloWorld extends Application {
                   File file = new File(fileNameAbsolute);
                   if (file.exists()){
                      System.out.println("DONE!");
-                  }//end try
-                  //catch (Exception e){
-                     //e.printStackTrace();
-                  //}//end catch
+                  }//end if
+                  File file2 = new File("error.jpg");
+                  
+                  
                   
                   //Runtime runTime = Runtime.getRuntime();
          			//Process process = runTime.exec(fileNameAbsolute);
