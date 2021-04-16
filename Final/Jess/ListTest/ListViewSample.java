@@ -49,20 +49,21 @@ public class ListViewSample extends Application {
         */
         names.addAll("Here is where more text would go", "If you select something, it changes button to that text", "It's not ideal, but it works");
          
+        
         data.add("Discord");
-        data.add("G-mail");
-        data.add("Github");
-        data.add("Microsoft Exchange");
-        data.add("Discord");
-        data.add("Reddit");
-        data.add("Instagram");
-        data.add("Facebook");
-        data.add("YouTube");
-        data.add("Lyft");
-        data.add("Uber");
-        data.add("Google Drive");
-        data.add("Steam");
-        data.add("GroupMe");
+        //data.add("G-mail");
+        //data.add("Github");
+        //data.add("Microsoft Exchange");
+        //data.add("Discord");
+        //data.add("Reddit");
+        //data.add("Instagram");
+        //data.add("Facebook");
+        //data.add("YouTube");
+        //data.add("Lyft");
+        //data.add("Uber");
+        //data.add("Google Drive");
+        //data.add("Steam");
+        //data.add("GroupMe");
         
           
         listView.setItems(data);

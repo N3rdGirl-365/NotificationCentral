@@ -14,6 +14,9 @@ are away, it will tell you if you have a lot of messages building up on a couple
 you marked as important needs your attention, so that you never forget to keep up with your email, 
 messages, assignments, and more.
 
+Current design uses javafx to build notification window with 5 buttons that when clicked, show the most recent notifications. And when clicked again, shrink back to the original size
+The window sits at the left side of screen and will sloat at top layer of screen, meaning a user can always have access to their current notifications.
+
 Link to project pages: https://n3rdgirl-365.github.io/
 
 

@@ -38,13 +38,13 @@ public class ResizingButtons extends Application {
             @Override
             public void handle(ActionEvent event) {
                 try{
-                //NOTE TO PROGRAMMER: try making a stack data type to store data for notifications (first in, last out)
-                            
+                //NOTE TO PROGRAMMER: try making a stack data type to store data for notifications (first in, last out)                      
                    if (toggle == false){
                       System.out.println("You clicked the button" + "   " + toggle);
                       largeDimensions(btn);
                       btn.setWrapText(true);
                       btn.setText("" + notifications[countNotification][0] + ": recieved at " + notifications[countNotification][2] + "  \n" + notifications[countNotification][1]);
+                      
                       //btn.setText("End of the line");
                       toggle = true;
                       countNotification = countNotification+1;            
