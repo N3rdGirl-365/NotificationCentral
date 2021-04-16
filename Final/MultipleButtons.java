@@ -2,17 +2,23 @@
  
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.Group;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.geometry.*;
 import java.util.concurrent.TimeUnit;
 import java.io.*;
 import java.util.*;
- 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
  
  
 public class MultipleButtons extends Application {
@@ -49,6 +55,8 @@ public class MultipleButtons extends Application {
         primaryStage.setX(-7);
         primaryStage.setY(0);
         
+        
+        
         Button btnC = new Button("Canvas");
         Button btnD = new Button("Discord");
         Button btnO = new Button("Outlook");
@@ -63,10 +71,43 @@ public class MultipleButtons extends Application {
         smallDimensions(btnO);
         smallDimensions(btnG);
         smallDimensions(btnJ);
+       
+        //set button icons
+        Image imgC = new Image("canvas.png");
+        ImageView imgCView = new ImageView(imgC);
+        imgCView.setFitWidth(18);
+        imgCView.setFitHeight(18);
+        btnC.setGraphic(imgCView);
+
+        Image imgD = new Image("discord.png");
+        ImageView imgDView = new ImageView(imgD);
+        imgDView.setFitWidth(18);
+        imgDView.setFitHeight(18);
+        btnD.setGraphic(imgDView);        
         
+        Image imgO = new Image("outlook.png");
+        ImageView imgOView = new ImageView(imgO);
+        imgOView.setFitWidth(18);
+        imgOView.setFitHeight(18);
+        btnO.setGraphic(imgOView);
         
+        Image imgG = new Image("GitHub.png");
+        ImageView imgGView = new ImageView(imgG);
+        imgGView.setFitWidth(18);
+        imgGView.setFitHeight(18);
+        btnG.setGraphic(imgGView);        
+                
+        Image imgJ = new Image("junk.png");
+        ImageView imgJView = new ImageView(imgJ);
+        imgJView.setFitWidth(18);
+        imgJView.setFitHeight(18);
+        btnJ.setGraphic(imgJView);        
         
-        // an event handler creation
+        final ScrollPane sc = new ScrollPane();
+       /* sc.setMin(0);
+        sc.setMax(600);
+        sc.setValue(50); */
+        
         EventHandler<ActionEvent> clickCanvas = new EventHandler<ActionEvent>(){
            public void handle(ActionEvent event){
               try{
@@ -261,6 +302,7 @@ public class MultipleButtons extends Application {
         
         // tile pane is created     
         VBox vbox = new VBox(5);
+        //vbox.getChildren().addAll(sc);
         vbox.getChildren().add(btnC);
         vbox.getChildren().add(btnD);
         vbox.getChildren().add(btnO);
@@ -298,7 +340,7 @@ public class MultipleButtons extends Application {
       
     //csv reading method
     private static void csvFileRead() throws Exception {
-       Scanner sc = new Scanner(new File("C:/Users/Owner/Documents/GitHub/Programs/attemptAgainAgain/NotificationCentral/CSV test.csv"));  
+       Scanner sc = new Scanner(new File("CSV test.csv"));  
        sc.useDelimiter(",");   //sets the delimiter pattern
        //String[][] notifications = new String[20][3];     
        String nextSource;
