@@ -90,7 +90,7 @@ public class ResizingButtons extends Application {
     
     //csv reading method
     private static void csvFileRead() throws Exception {
-       Scanner sc = new Scanner(new File("C:/Users/Owner/Documents/GitHub/Programs/attemptAgainAgain/NotificationCentral/CSV test.csv"));  
+       Scanner sc = new Scanner(new File("CSV test.csv")); 
        sc.useDelimiter(",");   //sets the delimiter pattern
        //String[][] notifications = new String[20][3];     
        String nextSource;

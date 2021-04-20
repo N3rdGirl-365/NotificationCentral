@@ -43,7 +43,6 @@ public class MultipleButtons extends Application {
         stackNotifications.add(notifications[4][0] + "!!");
         stackNotifications.add(notifications[5][0] + "!!");
         stackNotifications.add(notifications[6][0] + "!!");
-        
         launch(args);
     }//end main
     
@@ -115,16 +114,16 @@ public class MultipleButtons extends Application {
                     System.out.println("C: You clicked the button" + "   " + toggleC);
                     largeDimensions(btnC);
                     btnC.setWrapText(true);
-                    btnC.setText("Here's more info");
-                    //btnC.setText("" + notifications[countNotification][0] + ": recieved at " + notifications[countNotification][2] + "  \n" + notifications[countNotification][1]);
+                    //btnC.setText("Here's more info");
+                    btnC.setText("" + notifications[countNotification][0] + ": recieved at " + notifications[countNotification][2] + "  \n" + notifications[countNotification][1]);
                     toggleC = true;
-                    //countNotification = countNotification+1;   
+                    countNotification = countNotification+1;   
                  }//end if
                  else{
                     System.out.println("C: You clicked the button again." + "   " + toggleC);
                     smallDimensions(btnC);
-                    btnC.setText("Canvas: New notification");
-                    //btnC.setText("" + notifications[countNotification][0] + ": " + notifications[countNotification][1].substring(0,10) + " -- recieved at " + notifications[countNotification][2]);
+                    //btnC.setText("Canvas: New notification");
+                    btnC.setText("" + notifications[countNotification][0] + ": " + notifications[countNotification][1].substring(0,10) + " -- recieved at " + notifications[countNotification][2]);
                     toggleC = false;
                  }//end else
               }//end try
@@ -133,10 +132,10 @@ public class MultipleButtons extends Application {
                  smallDimensions(btnC);
                  btnC.setText("No new notifications at this time");                 
                  //Platform.runLater(new Runnable() {
-                   // @Override public void run() {
-                       //delay(3000);
-                       //System.out.println("Reset to default: Canvas");
-                       //btnC.setText("Canvas");
+                   //@Override public void run() {
+                      //delay(3000);
+                      //System.out.println("Reset to default: Canvas");
+                      //btnC.setText("Canvas");
                     //}//end run
                  //});//end runLater
               
@@ -315,16 +314,19 @@ public class MultipleButtons extends Application {
         
         
         
+        
     }//end stage
     
         
     //resizing methods
     private void smallDimensions(Button btn){
         btn.setMinWidth(200);
+        btn.setMaxWidth(200);
         btn.setMinHeight(50);
     }//end smallDimensions
     private void largeDimensions(Button btn){
         btn.setMinWidth(200);
+        btn.setMaxWidth(200);
         btn.setMinHeight(200);
     }//end smallDimensions
     
