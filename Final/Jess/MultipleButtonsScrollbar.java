@@ -12,6 +12,8 @@ import javafx.scene.layout.*;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.layout.VBox;
 import javafx.geometry.*;
 import java.util.concurrent.TimeUnit;
 import java.io.*;
@@ -102,7 +104,7 @@ public class MultipleButtonsScrollbar extends Application {
         imgJView.setFitHeight(18);
         btnJ.setGraphic(imgJView);        
         
-        final ScrollPane sc = new ScrollPane();
+        //final ScrollPane sc = new ScrollPane();
        /* sc.setMin(0);
         sc.setMax(600);
         sc.setValue(50); */
@@ -300,9 +302,12 @@ public class MultipleButtonsScrollbar extends Application {
         System.out.println(stackNotifications.pop());
         
         Group root = new Group();
-        Scrollbar sc = new ScrollBar();
+        ScrollBar sc = new ScrollBar();
         sc.setMin(0);
+        sc.setMax(600);
+        sc.setPrefHeight(620);
         sc.setOrientation(Orientation.VERTICAL);
+        //VBox.setVgrow(sc, Priority.ALWAYS);
         // tile pane is created     
         VBox vbox = new VBox(5);
         //vbox.getChildren().addAll(sc);
@@ -311,13 +316,16 @@ public class MultipleButtonsScrollbar extends Application {
         vbox.getChildren().add(btnO);
         vbox.getChildren().add(btnG);
         vbox.getChildren().add(btnJ);
-        vbox.setAlignment(Pos.CENTER);     
+        vbox.setAlignment(Pos.CENTER);
+        sc.setLayoutX(230);
+        sc.setLayoutY(15);
+        root.setLayoutX(5);
         primaryStage.setScene(new Scene(root, 250, 650));
-        root.getChildren().addAll(vb, sc);
+        root.getChildren().addAll(vbox, sc);
          sc.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov,
                Number old_val, Number new_val) {
-                  vb.setLayoutY(-new_val.doubleValue());
+                  vbox.setLayoutY(-new_val.doubleValue());
                }
             });        
 
