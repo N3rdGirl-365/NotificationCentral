@@ -304,8 +304,9 @@ public class MultipleButtonsScrollbar extends Application {
         Group root = new Group();
         ScrollBar sc = new ScrollBar();
         sc.setMin(0);
-        sc.setMax(600);
+        sc.setMax(650);
         sc.setPrefHeight(620);
+        //sc.setPrefWidth(2);
         sc.setOrientation(Orientation.VERTICAL);
         //VBox.setVgrow(sc, Priority.ALWAYS);
         // tile pane is created     
@@ -317,9 +318,10 @@ public class MultipleButtonsScrollbar extends Application {
         vbox.getChildren().add(btnG);
         vbox.getChildren().add(btnJ);
         vbox.setAlignment(Pos.CENTER);
-        sc.setLayoutX(230);
+        vbox.setLayoutX(20);
+        vbox.setLayoutY(15);
         sc.setLayoutY(15);
-        root.setLayoutX(5);
+        sc.setLayoutX(1);
         primaryStage.setScene(new Scene(root, 250, 650));
         root.getChildren().addAll(vbox, sc);
          sc.valueProperty().addListener(new ChangeListener<Number>() {
