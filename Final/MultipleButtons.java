@@ -101,12 +101,7 @@ public class MultipleButtons extends Application {
         imgJView.setFitWidth(18);
         imgJView.setFitHeight(18);
         btnJ.setGraphic(imgJView);        
-        
-        final ScrollPane sc = new ScrollPane();
-       /* sc.setMin(0);
-        sc.setMax(600);
-        sc.setValue(50); */
-        
+               
         EventHandler<ActionEvent> clickCanvas = new EventHandler<ActionEvent>(){
            public void handle(ActionEvent event){
               try{
@@ -299,6 +294,14 @@ public class MultipleButtons extends Application {
         
         System.out.println(stackNotifications.pop());
         
+        Group root = new Group();
+        ScrollBar sc = new ScrollBar();
+        sc.setMin(0);
+        sc.setMax(650);
+        sc.setPrefHeight(150);
+        //sc.setPrefWidth(2);
+        sc.setOrientation(Orientation.VERTICAL);
+        //VBox.setVgrow(sc, Priority.ALWAYS);
         // tile pane is created     
         VBox vbox = new VBox(5);
         //vbox.getChildren().addAll(sc);
@@ -307,10 +310,19 @@ public class MultipleButtons extends Application {
         vbox.getChildren().add(btnO);
         vbox.getChildren().add(btnG);
         vbox.getChildren().add(btnJ);
-        vbox.setAlignment(Pos.CENTER);     
-        primaryStage.setScene(new Scene(vbox, 250, 650));
-        
-        primaryStage.show();
+        vbox.setLayoutX(25);
+        root.setLayoutY(15);
+        sc.setLayoutX(1);
+        primaryStage.setScene(new Scene(root, 250, 650));
+        root.getChildren().addAll(vbox, sc);
+         sc.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov,
+               Number old_val, Number new_val) {
+                  vbox.setLayoutY(-new_val.doubleValue());
+               }
+            });        
+
+         primaryStage.show();
         
         
         

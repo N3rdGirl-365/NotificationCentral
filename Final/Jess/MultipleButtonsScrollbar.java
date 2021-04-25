@@ -317,10 +317,8 @@ public class MultipleButtonsScrollbar extends Application {
         vbox.getChildren().add(btnO);
         vbox.getChildren().add(btnG);
         vbox.getChildren().add(btnJ);
-        vbox.setAlignment(Pos.CENTER);
-        vbox.setLayoutX(20);
-        vbox.setLayoutY(15);
-        sc.setLayoutY(15);
+        vbox.setLayoutX(25);
+        root.setLayoutY(15);
         sc.setLayoutX(1);
         primaryStage.setScene(new Scene(root, 250, 650));
         root.getChildren().addAll(vbox, sc);
