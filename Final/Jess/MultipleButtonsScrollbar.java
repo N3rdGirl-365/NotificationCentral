@@ -12,6 +12,8 @@ import javafx.scene.layout.*;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.layout.VBox;
 import javafx.geometry.*;
 import java.util.concurrent.TimeUnit;
 import java.io.*;
@@ -21,7 +23,7 @@ import javafx.scene.image.ImageView;
 
  
  
-public class MultipleButtons extends Application {
+public class MultipleButtonsScrollbar extends Application {
     private boolean toggleC = false;
     private boolean toggleD = false;
     private boolean toggleO = false;
@@ -101,7 +103,12 @@ public class MultipleButtons extends Application {
         imgJView.setFitWidth(18);
         imgJView.setFitHeight(18);
         btnJ.setGraphic(imgJView);        
-               
+        
+        //final ScrollPane sc = new ScrollPane();
+       /* sc.setMin(0);
+        sc.setMax(600);
+        sc.setValue(50); */
+        
         EventHandler<ActionEvent> clickCanvas = new EventHandler<ActionEvent>(){
            public void handle(ActionEvent event){
               try{
@@ -298,7 +305,7 @@ public class MultipleButtons extends Application {
         ScrollBar sc = new ScrollBar();
         sc.setMin(0);
         sc.setMax(650);
-        sc.setPrefHeight(150);
+        sc.setPrefHeight(620);
         //sc.setPrefWidth(2);
         sc.setOrientation(Orientation.VERTICAL);
         //VBox.setVgrow(sc, Priority.ALWAYS);
@@ -386,7 +393,7 @@ public class MultipleButtons extends Application {
     
     
     
-}//end MultipleButtons class      
+}//end MultipleButtonsScrollbar class      
 
 
 
