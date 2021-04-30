@@ -317,7 +317,7 @@ public class MultipleButtons extends Application {
         sc.setContent(vbox);
         //sc.setLayoutX(20);
         sc.setPrefSize(250, 650);
-        sc.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        //sc.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         //sc.setLayoutX(1);
         sc.vvalueProperty().addListener(new ChangeListener<Number>() {
           public void changed(ObservableValue<? extends Number> ov,
