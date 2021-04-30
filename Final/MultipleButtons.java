@@ -57,14 +57,12 @@ public class MultipleButtons extends Application {
         primaryStage.setY(0);
         
         
-        
         Button btnC = new Button("Canvas");
         Button btnD = new Button("Discord");
         Button btnO = new Button("Outlook");
         Button btnG = new Button("GitHub");
         Button btnJ = new Button("Junk");
         
-        //VBox vbox = new VBox(5); // dist between boxes
         
         //call dimeninsions
         smallDimensions(btnC);
@@ -73,6 +71,7 @@ public class MultipleButtons extends Application {
         smallDimensions(btnG);
         smallDimensions(btnJ);
        
+       //icon manager
         //set button icons
         Image imgC = new Image("canvas.png");
         ImageView imgCView = new ImageView(imgC);
@@ -201,13 +200,6 @@ public class MultipleButtons extends Application {
                  System.out.println("No new notifications at this time");
                  smallDimensions(btnO);
                  btnO.setText("No new notifications at this time");                 
-                 //Platform.runLater(new Runnable() {
-                   // @Override public void run() {
-                       //delay(3000);
-                       //System.out.println("Reset to default: Canvas");
-                       //btnO.setText("Canvas");
-                    //}//end run
-                 //});//end runLater
               }//end catch
            }//end event
         };//end clickOutlook
@@ -237,13 +229,6 @@ public class MultipleButtons extends Application {
                  System.out.println("No new notifications at this time");
                  smallDimensions(btnG);
                  btnG.setText("No new notifications at this time");                 
-                 //Platform.runLater(new Runnable() {
-                   // @Override public void run() {
-                       //delay(3000);
-                       //System.out.println("Reset to default: Canvas");
-                       //btnG.setText("Canvas");
-                    //}//end run
-                 //});//end runLater
               }//end catch
            }//end event
         };//end clickGitHub
@@ -273,13 +258,6 @@ public class MultipleButtons extends Application {
                  System.out.println("No new notifications at this time");
                  smallDimensions(btnJ);
                  btnJ.setText("No new notifications at this time");                 
-                 //Platform.runLater(new Runnable() {
-                   // @Override public void run() {
-                       //delay(3000);
-                       //System.out.println("Reset to default: Canvas");
-                       //btnJ.setText("Canvas");
-                    //}//end run
-                 //});//end runLater
               }//end catch
            }//end event
         };//end clickDiscord        

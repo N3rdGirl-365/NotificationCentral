@@ -30,7 +30,7 @@ public class First extends Application {
     public void start(Stage stage) throws Exception {
 
         mainStage = stage;
-        //mainButton = new Button("Begin!");
+        mainButton = new Button("Begin!");
         mainButton2 = new Button("Begin2!");
         mainLabel = new Label("Ready");
 
@@ -46,7 +46,7 @@ public class First extends Application {
         mainButton.setOnAction(e -> {
             final Second s = new Second();
 
-            mainLabel.textProperty().bind(s.getProperty());
+            mainLabel.textProperty().bindBidirectional(s.getProperty());
 
             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0), new EventHandler<ActionEvent>() {
                 @Override
