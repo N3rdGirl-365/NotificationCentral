@@ -7,6 +7,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.Node;
+import javafx.scene.input.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.Group;
@@ -311,8 +313,9 @@ public class MultipleButtons extends Application {
         vbox.getChildren().add(btnG);
         vbox.getChildren().add(btnJ);
         vbox.setLayoutX(25);
-        root.setLayoutY(15);
+        root.setLayoutY(20);
         sc.setLayoutX(1);
+       // sc.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
         primaryStage.setScene(new Scene(root, 250, 650));
         root.getChildren().addAll(vbox, sc);
          sc.valueProperty().addListener(new ChangeListener<Number>() {

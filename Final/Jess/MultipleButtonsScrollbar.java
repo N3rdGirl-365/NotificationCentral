@@ -1,5 +1,6 @@
 //package helloworld;
- 
+import javafx.scene.input.ScrollEvent;
+import javafx.scene.Node;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -12,6 +13,7 @@ import javafx.scene.layout.*;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.scene.input.*;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.layout.VBox;
 import javafx.geometry.*;
@@ -46,6 +48,7 @@ public class MultipleButtonsScrollbar extends Application {
         stackNotifications.add(notifications[5][0] + "!!");
         stackNotifications.add(notifications[6][0] + "!!");
         launch(args);
+        
     }//end main
     
     @Override
@@ -104,10 +107,6 @@ public class MultipleButtonsScrollbar extends Application {
         imgJView.setFitHeight(18);
         btnJ.setGraphic(imgJView);        
         
-        //final ScrollPane sc = new ScrollPane();
-       /* sc.setMin(0);
-        sc.setMax(600);
-        sc.setValue(50); */
         
         EventHandler<ActionEvent> clickCanvas = new EventHandler<ActionEvent>(){
            public void handle(ActionEvent event){
@@ -305,19 +304,17 @@ public class MultipleButtonsScrollbar extends Application {
         ScrollBar sc = new ScrollBar();
         sc.setMin(0);
         sc.setMax(650);
-        sc.setPrefHeight(620);
-        //sc.setPrefWidth(2);
+        sc.setPrefHeight(200);
         sc.setOrientation(Orientation.VERTICAL);
-        //VBox.setVgrow(sc, Priority.ALWAYS);
         // tile pane is created     
         VBox vbox = new VBox(5);
-        //vbox.getChildren().addAll(sc);
         vbox.getChildren().add(btnC);
         vbox.getChildren().add(btnD);
         vbox.getChildren().add(btnO);
         vbox.getChildren().add(btnG);
         vbox.getChildren().add(btnJ);
         vbox.setLayoutX(25);
+        vbox.setLayoutY(150);
         root.setLayoutY(15);
         sc.setLayoutX(1);
         primaryStage.setScene(new Scene(root, 250, 650));
@@ -331,12 +328,16 @@ public class MultipleButtonsScrollbar extends Application {
 
          primaryStage.show();
         
-        
-        
-        
     }//end stage
     
-        
+        public void addMouseScrolling(Node node) {
+        node.setOnScroll((ScrollEvent event) -> {
+            // scroll up or down
+            node.setTranslateY(node.getTranslateY() + event.getDeltaY());
+         
+        });
+    }
+            
     //resizing methods
     private void smallDimensions(Button btn){
         btn.setMinWidth(200);
