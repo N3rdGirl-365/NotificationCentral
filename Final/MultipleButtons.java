@@ -7,6 +7,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.Node;
+import javafx.scene.input.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.Group;
@@ -295,39 +297,57 @@ public class MultipleButtons extends Application {
         System.out.println(stackNotifications.pop());
         
         Group root = new Group();
-        ScrollBar sc = new ScrollBar();
-        sc.setMin(0);
-        sc.setMax(650);
-        sc.setPrefHeight(150);
-        //sc.setPrefWidth(2);
-        sc.setOrientation(Orientation.VERTICAL);
-        //VBox.setVgrow(sc, Priority.ALWAYS);
+        //ScrollBar sc = new ScrollBar();
+        ScrollPane sc = new ScrollPane();
+        sc.setFitToWidth(true);
+        //sc.setMin(0);
+        //sc.setMax(650);
+        //sc.setPrefHeight(200);
+        //sc.setOrientation(Orientation.VERTICAL);
         // tile pane is created     
         VBox vbox = new VBox(5);
-        //vbox.getChildren().addAll(sc);
         vbox.getChildren().add(btnC);
         vbox.getChildren().add(btnD);
         vbox.getChildren().add(btnO);
         vbox.getChildren().add(btnG);
         vbox.getChildren().add(btnJ);
         vbox.setLayoutX(25);
-        root.setLayoutY(15);
-        sc.setLayoutX(1);
+        vbox.setLayoutY(150);
+        //root.setLayoutY(15);
+        sc.setContent(vbox);
+        vbox.setAlignment(Pos.CENTER);
+        //sc.setLayoutX(20);
+        sc.setPrefSize(250, 650);
+        //sc.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        //sc.setLayoutX(1);
+        sc.vvalueProperty().addListener(new ChangeListener<Number>() {
+          public void changed(ObservableValue<? extends Number> ov,
+              Number old_val, Number new_val) {
+                  System.out.println(new_val.intValue());
+          }
+        });
+        sc.hvalueProperty().addListener(new ChangeListener<Number>() {
+          public void changed(ObservableValue<? extends Number> ov,
+              Number old_val, Number new_val) {
+                  System.out.println(new_val.intValue());
+          }
+      });        
         primaryStage.setScene(new Scene(root, 250, 650));
         root.getChildren().addAll(vbox, sc);
-         sc.valueProperty().addListener(new ChangeListener<Number>() {
+         /*sc.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov,
                Number old_val, Number new_val) {
                   vbox.setLayoutY(-new_val.doubleValue());
                }
-            });        
+            });        */
 
          primaryStage.show();
         
-        
-        
-        
     }//end stage
+        
+        
+        
+        
     
         
     //resizing methods
