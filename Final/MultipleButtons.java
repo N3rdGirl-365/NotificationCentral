@@ -315,6 +315,7 @@ public class MultipleButtons extends Application {
         vbox.setLayoutY(150);
         //root.setLayoutY(15);
         sc.setContent(vbox);
+        vbox.setAlignment(Pos.CENTER);
         //sc.setLayoutX(20);
         sc.setPrefSize(250, 650);
         //sc.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
