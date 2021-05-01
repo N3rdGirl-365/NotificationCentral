@@ -25,6 +25,8 @@ import javafx.scene.image.ImageView;
  
 abstract class MultipleButtonsOOP extends Application {
 
+ private int countNotification = 0;
+ private static int counter = 0;
  private static String[][] notifications = new String[20][3];
  private static Stack<String> stackNotifications = new Stack<String>();
  
@@ -63,13 +65,13 @@ abstract class MultipleButtonsOOP extends Application {
        }//end while     
        sc.close();  //closes the scanner  
    
-       //for(int i =0; i< notifications.length; i++){
-       //   if (notifications[i][0] != null){
-       //      //System.out.println("Notification ");
-       //      counter = counter +1;
-       //      System.out.println(notifications[i][0] + ": " + notifications[i][1] + " -- recieved at " + notifications[i][2]);
-       //   }//end if
-       //}//end for
+       for(int i =0; i< notifications.length; i++){
+          if (notifications[i][0] != null){
+             //System.out.println("Notification ");
+             counter = counter +1;
+             System.out.println(notifications[i][0] + ": " + notifications[i][1] + " -- recieved at " + notifications[i][2]);
+          }//end if
+       }//end for
     }//end csvFileRead
 
  
@@ -77,10 +79,9 @@ abstract class MultipleButtonsOOP extends Application {
 }//end multipleButtonsOOP class
  
 class NotificationButton extends Button implements EventHandler <ActionEvent> {
-   //MultipleButtonsOOP mutipleButtons = new MultipleButtonsOOP();
-   String[][] notifications = new String[20][3];//get notifications from prev class    
+   private static String[][] notifications = new String[20][3];//get notifications from prev class 
    private int countNotification = 0;
-   private int counter = 0;
+   private static int counter = 0;
    private Image icon;
    private boolean toggle = false;
    private String platformName;
@@ -95,10 +96,92 @@ class NotificationButton extends Button implements EventHandler <ActionEvent> {
       this.setGraphic(imgView);
       this.setOnAction(this);
       this.smallDimensions(this);
-      csvFileRead();
    }//end conctructor
+    
+   EventHandler<ActionEvent> clickButton = new EventHandler<ActionEvent>(){
+   public void handle(ActionEvent event){
+      try{
+         if (toggle == false){
+            System.out.println(platformName + " You clicked the button" + "   " + toggle);
+            largeDimensions(this);
+            this.setWrapText(true);
+            this.setText("" + notifications[countNotification][0] + ": recieved at " + notifications[countNotification][2] + "  \n" + notifications[countNotification][1]);
+            toggle = true;
+            countNotification = countNotification+1;   
+         }//end if
+         else{
+            System.out.println(platformName + " You clicked the button again." + "   " + toggle);
+            smallDimensions(this);
+            this.setText("" + notifications[countNotification][0] + ": " + notifications[countNotification][1].substring(0,10) + " -- recieved at " + notifications[countNotification][2]);
+            toggle = false;
+          }//end else
+      }//end try
+      catch(Exception e){
+         System.out.println("No new notifications at this time");
+         smallDimensions(this);
+         this.setText("No new notifications at this time");                            
+      }//end catch           
+   }//end method
+   };//end event action
+    
+   //resizing methods
+    private void smallDimensions(Button btn){
+       btn.setMinWidth(200);
+       btn.setMaxWidth(200);
+       btn.setMinHeight(50);
+    }//end smallDimensions
+    private void largeDimensions(Button btn){
+       btn.setMinWidth(200);
+       btn.setMaxWidth(200);
+       btn.setMinHeight(200);
+    }//end smallDimensions
+ 
+    //delay method
+    private void delay(int time){
+       try{
+          Thread.sleep(time);
+       }//end try
+       catch(Exception e){
+          Thread.currentThread().interrupt();
+       }//end catch
+    }//end delay method
+    
+    //csv reading method
+    private static void csvFileRead() throws Exception {
+       Scanner sc = new Scanner(new File("CSV test.csv"));  
+       sc.useDelimiter(",");   //sets the delimiter pattern
+       String nextSource;
+       String nextMessage;
+       String nextTimeStamp;
+       int cnt = 0;
+     
+       while (sc.hasNext()){  //returns a boolean value  
+          nextSource = sc.next().replaceAll("[\\n\\t\\r]", "");//remove newline characters etc
+          nextMessage = sc.next().replaceAll("[\\n\\t\\r]", "");//remove newline characters etc
+          nextTimeStamp = sc.next().replaceAll("[\\n\\t\\r]", "");//remove newline characters etc
+      
+          notifications[cnt][0] = nextSource;
+          notifications[cnt][1] = nextMessage;
+          notifications[cnt][2] = nextTimeStamp;
+      
+          cnt = cnt + 1;
+       }//end while     
+       sc.close();  //closes the scanner  
    
-   @Override
+       for(int i =0; i< notifications.length; i++){
+          if (notifications[i][0] != null){
+             //System.out.println("Notification ");
+             counter = counter +1;
+             System.out.println(notifications[i][0] + ": " + notifications[i][1] + " -- recieved at " + notifications[i][2]);
+          }//end if
+       }//end for
+    }//end csvFileRead
+   
+        
+
+
+    
+    //@Override
     public void start(Stage primaryStage) throws Exception {
         
         
@@ -116,11 +199,11 @@ class NotificationButton extends Button implements EventHandler <ActionEvent> {
         //call method to set event to each button   
         
         //create events to buttons
-        btnC.setOnAction(event);
-        btnD.setOnAction(event);
-        btnO.setOnAction(event);
-        btnG.setOnAction(event);
-        btnJ.setOnAction(event);
+        btnC.setOnAction(clickButton);
+        btnD.setOnAction(clickButton);
+        btnO.setOnAction(clickButton);
+        btnG.setOnAction(clickButton);
+        btnJ.setOnAction(clickButton);
 
         
         System.out.println(stackNotifications.pop());
@@ -161,90 +244,6 @@ class NotificationButton extends Button implements EventHandler <ActionEvent> {
          primaryStage.show();
         
     }//end stage
-    
- 
-   public void handle(ActionEvent event){
-      try{
-         if (toggle == false){
-            System.out.println(platformName + " You clicked the button" + "   " + toggle);
-            largeDimensions(this);
-            this.setWrapText(true);
-            this.setText("" + notifications[countNotification][0] + ": recieved at " + notifications[countNotification][2] + "  \n" + notifications[countNotification][1]);
-            toggle = true;
-            countNotification = countNotification+1;   
-         }//end if
-         else{
-            System.out.println(platformName + " You clicked the button again." + "   " + toggle);
-            smallDimensions(this);
-            this.setText("" + notifications[countNotification][0] + ": " + notifications[countNotification][1].substring(0,10) + " -- recieved at " + notifications[countNotification][2]);
-            toggle = false;
-          }//end else
-      }//end try
-      catch(Exception e){
-         System.out.println("No new notifications at this time");
-         smallDimensions(this);
-         this.setText("No new notifications at this time");                            
-      }//end catch           
-   }//end method
-    
-   //resizing methods
-    private void smallDimensions(Button btn){
-       btn.setMinWidth(200);
-       btn.setMaxWidth(200);
-       btn.setMinHeight(50);
-    }//end smallDimensions
-    private void largeDimensions(Button btn){
-       btn.setMinWidth(200);
-       btn.setMaxWidth(200);
-       btn.setMinHeight(200);
-    }//end smallDimensions
- 
-    //delay method
-    private void delay(int time){
-       try{
-          Thread.sleep(time);
-       }//end try
-       catch(Exception e){
-          Thread.currentThread().interrupt();
-       }//end catch
-    }//end delay method
-    
-     //csv reading method
-    private void csvFileRead() throws Exception {
-       Scanner sc = new Scanner(new File("CSV test.csv"));  
-       sc.useDelimiter(",");   //sets the delimiter pattern
-       String nextSource;
-       String nextMessage;
-       String nextTimeStamp;
-       int cnt = 0;
-     
-       while (sc.hasNext()){  //returns a boolean value  
-          nextSource = sc.next().replaceAll("[\\n\\t\\r]", "");//remove newline characters etc
-          nextMessage = sc.next().replaceAll("[\\n\\t\\r]", "");//remove newline characters etc
-          nextTimeStamp = sc.next().replaceAll("[\\n\\t\\r]", "");//remove newline characters etc
-      
-          notifications[cnt][0] = nextSource;
-          notifications[cnt][1] = nextMessage;
-          notifications[cnt][2] = nextTimeStamp;
-      
-          cnt = cnt + 1;
-       }//end while     
-       sc.close();  //closes the scanner  
-   
-       for(int i =0; i< notifications.length; i++){
-          if (notifications[i][0] != null){
-             //System.out.println("Notification ");
-             counter = counter +1;
-             System.out.println(notifications[i][0] + ": " + notifications[i][1] + " -- recieved at " + notifications[i][2]);
-          }//end if
-       }//end for
-    }//end csvFileRead
-   
-        
-
-
-    
-    
     
 
 }//end Notification class
