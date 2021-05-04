@@ -78,7 +78,7 @@ abstract class MultipleButtonsOOP extends Application {
  
 }//end multipleButtonsOOP class
  
-abstract class NotificationButton extends Button implements EventHandler <ActionEvent> {
+class NotificationButton extends Button implements EventHandler <ActionEvent> {
    private static String[][] notifications = new String[20][3];//get notifications from prev class 
    private int countNotification = 0;
    private static int counter = 0;
@@ -98,7 +98,7 @@ abstract class NotificationButton extends Button implements EventHandler <Action
       this.smallDimensions(this);
    }//end conctructor
     
-   //EventHandler<ActionEvent> clickButton = new EventHandler<ActionEvent>(){
+   EventHandler<ActionEvent> clickButton = new EventHandler<ActionEvent>(){
    public void handle(ActionEvent event){
       try{
          if (toggle == false){
@@ -122,7 +122,7 @@ abstract class NotificationButton extends Button implements EventHandler <Action
          this.setText("No new notifications at this time");                            
       }//end catch           
    }//end method
-   //};//end event action
+   };//end event action
     
    //resizing methods
     private void smallDimensions(Button btn){

@@ -20,18 +20,23 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
+<<<<<<< HEAD
 public class NotificationButton extends Button implements EventHandler<ActionEvent>{
    private static ReadInCSV readInCSV = new ReadInCSV();
    private static String[][] notifications; //get notifications from prev class 
    private static List<Integer> buttonNotificationIndices;//get teh indeces for the
+=======
+public class NotificationButton extends Button implements EventHandler<ActionEvent> {
+   private static MultipleButtonsOOP multipleButtons = new MultipleButtonsOOP();
+   private static String[][] notifications = multipleButtons.notifications; //get notifications from prev class 
+>>>>>>> parent of 416bd4d (update for object oriented code)
    private int countNotification = 0;
    private static int counter = 0;
    private Image icon;
    private boolean toggle = true;
    private String platformName;
-   
-   
-       
+    
+    
     
    public NotificationButton(String platformName, String fileName, String csvFileName){
       super(platformName);
@@ -44,12 +49,15 @@ public class NotificationButton extends Button implements EventHandler<ActionEve
       this.setGraphic(imgView);
       this.setOnAction(this);
       this.smallDimensions(this);
+<<<<<<< HEAD
       notifications = readInCSV.getNotification(csvFileName);
       buttonNotificationIndices = readInCSV.getNotificationForButton(name);
       
+=======
+>>>>>>> parent of 416bd4d (update for object oriented code)
    }//end conctructor
     
-   //EventHandler<ActionEvent> clickButton = new EventHandler<ActionEvent>(){
+   EventHandler<ActionEvent> clickButton = new EventHandler<ActionEvent>(){
    public void handle(ActionEvent event){
       try{
          //basically, what i need to i is read through each platofrm name from the notification, and if the 
@@ -76,7 +84,7 @@ public class NotificationButton extends Button implements EventHandler<ActionEve
          this.setText("No new notifications at this time");                            
       }//end catch           
    }//end method
-   //};//end event action
+   };//end event action
     
    //resizing methods
     private void smallDimensions(Button btn){
@@ -101,7 +109,69 @@ public class NotificationButton extends Button implements EventHandler<ActionEve
     }//end delay method
     
 
-    
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        
+        
+        primaryStage.setTitle("Hello World!");
+        primaryStage.setX(-7);
+        primaryStage.setY(0);
+        
+        //generate buttons
+        Button btnC = new NotificationButton("Canvas", "canvas.png");
+        Button btnD = new NotificationButton("Discord", "discord.png");
+        Button btnO = new NotificationButton("Outlook", "outlook.png");
+        Button btnG = new NotificationButton("GitHub", "GitHub.png");
+        Button btnJ = new NotificationButton("Junk", "junk.png");
+           
+        //call method to set event to each button   
+        
+        //create events to buttons
+        btnC.setOnAction(clickButton);
+        btnD.setOnAction(clickButton);
+        btnO.setOnAction(clickButton);
+        btnG.setOnAction(clickButton);
+        btnJ.setOnAction(clickButton);
+
+        
+        System.out.println(stackNotifications.pop());
+        
+        Group root = new Group();
+        ScrollPane sc = new ScrollPane();
+        VBox vbox = new VBox(5);
+        
+        sc.setFitToWidth(true);
+        
+        vbox.getChildren().add(btnC);
+        vbox.getChildren().add(btnD);
+        vbox.getChildren().add(btnO);
+        vbox.getChildren().add(btnG);
+        vbox.getChildren().add(btnJ);
+        
+        vbox.setLayoutX(25);
+        vbox.setLayoutY(150);
+        sc.setContent(vbox);
+        sc.setPrefSize(250, 650);
+        vbox.setAlignment(Pos.CENTER);
+        
+        
+        sc.vvalueProperty().addListener(new ChangeListener<Number>() {
+          public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                  System.out.println(new_val.intValue());
+          }
+        });//end listener
+        sc.hvalueProperty().addListener(new ChangeListener<Number>() {
+          public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                  System.out.println(new_val.intValue());
+          }
+      });//end listener        
+        primaryStage.setScene(new Scene(root, 250, 650));
+        root.getChildren().addAll(vbox, sc);
+
+
+         primaryStage.show();
+        
+    }//end stage
     
 
 }//end Notification class

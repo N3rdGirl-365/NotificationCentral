@@ -23,8 +23,13 @@ import javafx.scene.image.ImageView;
 
  
  
+<<<<<<< HEAD:Final/Rachel/ObjectOrientedCode/ReadInCSV.java
 public class ReadInCSV {
  private static String currentFileName = "";
+=======
+public class MultipleButtonsOOP extends Application {
+
+>>>>>>> parent of 416bd4d (update for object oriented code):Final/Rachel/ObjectOrientedCode/MultipleButtonsOOP.java
  private int countNotification = 0;
  private static int counter = 0;
  private static String[][] notifications = new String[20][3];
@@ -44,10 +49,14 @@ public class ReadInCSV {
      stackNotifications.add(notifications[4][0] + "!!");
      stackNotifications.add(notifications[5][0] + "!!");
      stackNotifications.add(notifications[6][0] + "!!");
+<<<<<<< HEAD:Final/Rachel/ObjectOrientedCode/ReadInCSV.java
      }//end try
      catch (Exception e){
         System.out.println("Error main: " + e); 
      }//
+=======
+     launch(args);
+>>>>>>> parent of 416bd4d (update for object oriented code):Final/Rachel/ObjectOrientedCode/MultipleButtonsOOP.java
  }//end main
  
 
@@ -94,6 +103,7 @@ public class ReadInCSV {
       }//end ctach
     }//end csvFileRead
 
+<<<<<<< HEAD:Final/Rachel/ObjectOrientedCode/ReadInCSV.java
     public static String[][] getNotification(String fileName){
        try{
        csvFileRead(fileName);
@@ -105,6 +115,8 @@ public class ReadInCSV {
        return emptyArray;
        }//
     }//end getNotificatio method
+=======
+>>>>>>> parent of 416bd4d (update for object oriented code):Final/Rachel/ObjectOrientedCode/MultipleButtonsOOP.java
  
     public static List<Integer> getNotificationForButton(String param){
       try{
