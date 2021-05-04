@@ -21,10 +21,16 @@ import javafx.scene.image.ImageView;
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class NotificationButton extends Button implements EventHandler<ActionEvent>{
    private static ReadInCSV readInCSV = new ReadInCSV();
    private static String[][] notifications; //get notifications from prev class 
    private static List<Integer> buttonNotificationIndices;//get teh indeces for the
+=======
+public class NotificationButton extends Button implements EventHandler<ActionEvent> {
+   private static MultipleButtonsOOP multipleButtons = new MultipleButtonsOOP();
+   private static String[][] notifications = multipleButtons.notifications; //get notifications from prev class 
+>>>>>>> parent of 416bd4d (update for object oriented code)
 =======
 public class NotificationButton extends Button implements EventHandler<ActionEvent> {
    private static MultipleButtonsOOP multipleButtons = new MultipleButtonsOOP();
@@ -35,6 +41,11 @@ public class NotificationButton extends Button implements EventHandler<ActionEve
    private Image icon;
    private boolean toggle = true;
    private String platformName;
+<<<<<<< HEAD
+=======
+    
+    
+>>>>>>> parent of 416bd4d (update for object oriented code)
     
     
     
@@ -50,9 +61,12 @@ public class NotificationButton extends Button implements EventHandler<ActionEve
       this.setOnAction(this);
       this.smallDimensions(this);
 <<<<<<< HEAD
+<<<<<<< HEAD
       notifications = readInCSV.getNotification(csvFileName);
       buttonNotificationIndices = readInCSV.getNotificationForButton(name);
       
+=======
+>>>>>>> parent of 416bd4d (update for object oriented code)
 =======
 >>>>>>> parent of 416bd4d (update for object oriented code)
    }//end conctructor
