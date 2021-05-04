@@ -20,20 +20,22 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
-public class NotificationButton extends Button implements EventHandler<ActionEvent> {
+public class NotificationButton extends Button implements EventHandler<ActionEvent>{
    private static ReadInCSV readInCSV = new ReadInCSV();
-   private static String[][] notifications = readInCSV.getNotification(); //get notifications from prev class 
+   private static String[][] notifications; //get notifications from prev class 
+   private static List<Integer> buttonNotificationIndices;//get teh indeces for the
    private int countNotification = 0;
    private static int counter = 0;
    private Image icon;
-   private boolean toggle = false;
+   private boolean toggle = true;
    private String platformName;
    
    
        
     
-   public NotificationButton(String platformName, String fileName){
+   public NotificationButton(String platformName, String fileName, String csvFileName){
       super(platformName);
+      String name = platformName;
       this.icon = new Image(fileName);
       this.platformName = platformName;//update instance variable
       ImageView imgView = new ImageView(this.icon);
@@ -42,18 +44,21 @@ public class NotificationButton extends Button implements EventHandler<ActionEve
       this.setGraphic(imgView);
       this.setOnAction(this);
       this.smallDimensions(this);
-      System.out.println("Hello");
-      System.out.println("" + notifications[0][0]);
+      notifications = readInCSV.getNotification(csvFileName);
+      buttonNotificationIndices = readInCSV.getNotificationForButton(name);
       
    }//end conctructor
     
    //EventHandler<ActionEvent> clickButton = new EventHandler<ActionEvent>(){
    public void handle(ActionEvent event){
       try{
+         //basically, what i need to i is read through each platofrm name from the notification, and if the 
          if (toggle == false){
             System.out.println(platformName + " You clicked the button" + "   " + toggle);
             largeDimensions(this);
             this.setWrapText(true);
+            //int index = buttonNotificationIndices.get(countNotification);
+            //System.out.println("First: " + notifications[index][0] + ", Second: " + notifications[index][1] + ", Third: " + notifications[index][2]); 
             this.setText("" + notifications[countNotification][0] + ": recieved at " + notifications[countNotification][2] + "  \n" + notifications[countNotification][1]);
             toggle = true;
             countNotification = countNotification+1;   

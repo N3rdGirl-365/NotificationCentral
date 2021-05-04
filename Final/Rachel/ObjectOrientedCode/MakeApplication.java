@@ -35,22 +35,13 @@ public class MakeApplication extends Application{
         primaryStage.setY(0);
         
         //generate buttons
-        Button btnC = new NotificationButton("Canvas", "canvas.png");
-        Button btnD = new NotificationButton("Discord", "discord.png");
-        Button btnO = new NotificationButton("Outlook", "outlook.png");
-        Button btnG = new NotificationButton("GitHub", "GitHub.png");
-        Button btnJ = new NotificationButton("Junk", "junk.png");
+        Button btnC = new NotificationButton(APP_ID_Canvas, "canvas.png","canvas.csv");
+        Button btnD = new NotificationButton("Discord", "discord.png", "discord.csv");
+        //Button btnO = new NotificationButton("Outlook", "outlook.png");
+        //Button btnG = new NotificationButton("GitHub", "GitHub.png");
+        //Button btnJ = new NotificationButton("Junk", "junk.png");
            
-        //call method to set event to each button   
-        
-        //create events to buttons
-        //btnC.setOnAction(clickButton);
-        //btnD.setOnAction(clickButton);
-        //btnO.setOnAction(clickButton);
-        //btnG.setOnAction(clickButton);
-        //btnJ.setOnAction(clickButton);
-
-        
+               
         //System.out.println(stackNotifications.pop());
         
         Group root = new Group();
@@ -61,9 +52,9 @@ public class MakeApplication extends Application{
         
         vbox.getChildren().add(btnC);
         vbox.getChildren().add(btnD);
-        vbox.getChildren().add(btnO);
-        vbox.getChildren().add(btnG);
-        vbox.getChildren().add(btnJ);
+        //vbox.getChildren().add(btnO);
+        //vbox.getChildren().add(btnG);
+        //vbox.getChildren().add(btnJ);
         
         vbox.setLayoutX(25);
         vbox.setLayoutY(150);
