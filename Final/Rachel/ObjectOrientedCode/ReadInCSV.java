@@ -23,7 +23,7 @@ import javafx.scene.image.ImageView;
 
  
  
-public class MultipleButtonsOOP extends Application {
+public class ReadInCSV {
 
  private int countNotification = 0;
  private static int counter = 0;
@@ -40,7 +40,6 @@ public class MultipleButtonsOOP extends Application {
      stackNotifications.add(notifications[4][0] + "!!");
      stackNotifications.add(notifications[5][0] + "!!");
      stackNotifications.add(notifications[6][0] + "!!");
-     launch(args);
  }//end main
  
  //csv reading method
@@ -74,6 +73,10 @@ public class MultipleButtonsOOP extends Application {
        }//end for
     }//end csvFileRead
 
+    public static String[][] getNotification() throws Exception{
+       csvFileRead();
+       return notifications;
+    }//end getNotificatio method
  
  
 }//end multipleButtonsOOP class
