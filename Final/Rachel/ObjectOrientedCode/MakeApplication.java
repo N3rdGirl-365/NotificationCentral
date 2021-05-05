@@ -35,8 +35,8 @@ public class MakeApplication extends Application{
         primaryStage.setY(0);
         
         //generate buttons
-        Button btnC = new NotificationButton(APP_ID_Canvas, "canvas.png","canvas.csv");
-        Button btnD = new NotificationButton("Discord", "discord.png", "discord.csv");
+        Button btnC = new NotificationButton("Canvas", "canvas.png");
+        Button btnD = new NotificationButton("Discord", "discord.png");
         //Button btnO = new NotificationButton("Outlook", "outlook.png");
         //Button btnG = new NotificationButton("GitHub", "GitHub.png");
         //Button btnJ = new NotificationButton("Junk", "junk.png");
