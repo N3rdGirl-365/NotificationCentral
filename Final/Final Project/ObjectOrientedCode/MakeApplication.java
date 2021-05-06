@@ -25,20 +25,22 @@ public class MakeApplication extends Application{
       launch(args);
    }//end main
 
-@Override
+    @Override
     public void start(Stage primaryStage) throws Exception {
         
         
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Notification Central");
         primaryStage.setX(-7);
         primaryStage.setY(0);
         
         //generate buttons
-        Button btnC = new NotificationButton("Canvas", "canvas.png","canvas.csv");
-        Button btnD = new NotificationButton("Discord", "discord.png", "discord.csv");
-        Button btnO = new NotificationButton("Outlook", "outlook.png", "outlook.csv");
-        Button btnG = new NotificationButton("GitHub", "GitHub.png", "github.csv");
-        Button btnJ = new NotificationButton("Junk", "junk.png", "junk.csv");
+        Button btn1 = new NotificationButton("Canvas", "canvas.png","canvas.csv");
+        Button btn2 = new NotificationButton("Discord", "discord.png", "discord.csv");
+        Button btn3 = new NotificationButton("Outlook", "outlook.png", "outlook.csv");
+        Button btn4 = new NotificationButton("GitHub", "GitHub.png", "github.csv");
+        Button btn5 = new NotificationButton("Junk", "junk.png", "junk.csv");
+      
+        //add an 'edit menu' button that calls UserSetup class and let's user select the 5 apps they want to see
         
         Group root = new Group();
         ScrollPane sc = new ScrollPane();
@@ -46,11 +48,11 @@ public class MakeApplication extends Application{
         
         sc.setFitToWidth(true);
         
-        vbox.getChildren().add(btnC);
-        vbox.getChildren().add(btnD);
-        vbox.getChildren().add(btnO);
-        vbox.getChildren().add(btnG);
-        vbox.getChildren().add(btnJ);
+        vbox.getChildren().add(btn1);
+        vbox.getChildren().add(btn2);
+        vbox.getChildren().add(btn3);
+        vbox.getChildren().add(btn4);
+        vbox.getChildren().add(btn5);
         
         vbox.setLayoutX(25);
         vbox.setLayoutY(150);

@@ -4,10 +4,10 @@ import java.util.*;
  
  
 public class ReadInCSV {
- private static String currentFileName = "";
- private int countNotification = 0;
- private static int counter = 0;
- private String[][] notifications = new String[20][3];
+   private static String currentFileName = "";
+   private int countNotification = 0;
+   private static int counter = 0;
+   private String[][] notifications = new String[20][3];
 
 
  //csv reading method
