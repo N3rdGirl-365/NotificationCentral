@@ -70,8 +70,13 @@ public class MakeApplication extends Application{
           public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
                   System.out.println(new_val.intValue());
           }
-      });//end listener        
-        primaryStage.setScene(new Scene(root, 250, 650));
+      });//end listener
+        Scene scene = new Scene(root, 250, 650);
+        primaryStage.setOpacity(0.75);
+        vbox.setOpacity(1);
+        scene.getStylesheets().add("style.css");      
+        primaryStage.setScene(scene);
+
         root.getChildren().addAll(vbox, sc);
 
 
