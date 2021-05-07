@@ -1,10 +1,16 @@
 //This is the CSS stylesheet for Notification Central
 
+#pane {
+   -fx-background-image: url("dandelion.PNG");
+   -fx-background-repeat: stretch;   
+   -fx-background-position: center center;
+}
+
 .root {
 	
 	-fx-base: rgb(0, 89, 154); 
-
 }
+
 
 .button{
     -fx-border-color: transparent;
@@ -27,10 +33,10 @@
 
 .scroll-bar:horizontal .track,
 .scroll-bar:vertical .track{
-    -fx-background-color :transparent;
-    -fx-border-color :transparent;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
     -fx-background-radius : 0.0em;
-    -fx-border-radius :2.0em;
+    -fx-border-radius :	2.0em;
 }
 
 
@@ -57,9 +63,9 @@
 }
 
  .scroll-bar:vertical .increment-arrow,
- .scroll-bar:vertical .decrement-arrow{
+ .scroll-bar:vertical .decrement-arrow {
     -fx-shape : " ";    
-    -fx-padding :0.0 0.15em;
+    -fx-padding : 0.0 0.15em;
 }
 
 .scroll-bar:horizontal .thumb,
@@ -82,5 +88,7 @@
 }
 
 Vbox {
-    -fx-alignment: center;
+    -fx-alignment: center center;
+    
 }
+
