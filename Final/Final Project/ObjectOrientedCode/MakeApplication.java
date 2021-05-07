@@ -73,7 +73,6 @@ public class MakeApplication extends Application{
       });//end listener
         Scene scene = new Scene(root, 250, 650);
         primaryStage.setOpacity(0.75);
-        vbox.setOpacity(1);
         scene.getStylesheets().add("style.css");      
         primaryStage.setScene(scene);
 
