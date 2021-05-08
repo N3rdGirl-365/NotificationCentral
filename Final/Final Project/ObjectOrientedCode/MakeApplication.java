@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.input.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -56,9 +57,21 @@ public class MakeApplication extends Application{
         
         vbox.setLayoutX(25);
         vbox.setLayoutY(150);
+        vbox.setPrefWidth(250);
+        vbox.setPrefHeight(650);
         sc.setContent(vbox);
+        BackgroundImage image = new BackgroundImage(new Image(new FileInputStream("dandelion-lightblue.PNG")), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT,
+        BackgroundPosition.CENTER, new BackgroundSize(250, 650, true, true, true, true));
+        //image.setId("BackgroundImage");
+        //ImageView imageView = new ImageView();
+        //imageView.setImage(image);
+        vbox.setBackground(new Background(image));
+        //imageView.setFitWidth(true);
         sc.setPrefSize(250, 650);
+
+
         vbox.setAlignment(Pos.CENTER);
+        //sc.setYAlignment(15);
         
         
         sc.vvalueProperty().addListener(new ChangeListener<Number>() {
@@ -70,12 +83,13 @@ public class MakeApplication extends Application{
           public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
                   System.out.println(new_val.intValue());
           }
-      });//end listener        
-        primaryStage.setScene(new Scene(root, 250, 650));
+      });//end listener
+        Scene scene = new Scene(root, 250, 650);
+        primaryStage.setOpacity(0.75);
+        scene.getStylesheets().add("style.css");           
+        primaryStage.setScene(scene);
         root.getChildren().addAll(vbox, sc);
-
-
-         primaryStage.show();
+        primaryStage.show();
         
     }//end stage
 
