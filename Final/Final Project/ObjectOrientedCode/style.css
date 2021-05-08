@@ -6,6 +6,7 @@
    -fx-background-position: center center;
 }
 
+
 .root {
 	
 	-fx-base: rgb(0, 89, 154); 
@@ -16,7 +17,7 @@
     -fx-border-color: transparent;
     -fx-border-width: 0;
     -fx-background-radius: 0;
-    -fx-background-color: rgb(53, 143, 186);
+    -fx-background-color: rgba(53, 143, 186, 0.9);
     -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 14px;
     -fx-text-fill: white;
