@@ -41,14 +41,14 @@ public class MakeApplication extends Application{
         Button btn4 = new NotificationButton("GitHub", "GitHub.png", "github.csv");
         Button btn5 = new NotificationButton("Junk", "junk.png", "junk.csv");
       
-        //add an 'edit menu' button that calls UserSetup class and let's user select the 5 apps they want to see
         
         Group root = new Group();
         ScrollPane sc = new ScrollPane();
         VBox vbox = new VBox(5);
         
-        sc.setFitToWidth(true);
         
+        
+        //add buttons
         vbox.getChildren().add(btn1);
         vbox.getChildren().add(btn2);
         vbox.getChildren().add(btn3);
@@ -60,12 +60,17 @@ public class MakeApplication extends Application{
         vbox.setPrefWidth(250);
         vbox.setPrefHeight(650);
         sc.setContent(vbox);
+        //se tbackbround image
         BackgroundImage image = new BackgroundImage(new Image(new FileInputStream("dandelion-lightblue2.PNG")), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT,
         BackgroundPosition.CENTER, new BackgroundSize(250, 650, true, true, true, true));
         vbox.setBackground(new Background(image));
-        sc.setPrefSize(250, 650);
-        vbox.setAlignment(Pos.CENTER);
         
+        //position for buttons
+        vbox.setAlignment(Pos.CENTER);
+       
+        //scroll bar
+        sc.setFitToWidth(true);
+        sc.setPrefSize(250, 650);
         sc.vvalueProperty().addListener(new ChangeListener<Number>() {
           public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
                   System.out.println(new_val.intValue());
@@ -76,13 +81,14 @@ public class MakeApplication extends Application{
                   System.out.println(new_val.intValue());
           }
       });//end listener
-        Scene scene = new Scene(root, 250, 650);
-        primaryStage.setOpacity(0.75);
-        scene.getStylesheets().add("style.css");           
-        primaryStage.setScene(scene);
-        root.getChildren().addAll(vbox, sc);
-        primaryStage.show();
+      
+      //build stage
+      Scene scene = new Scene(root, 250, 650);
+      primaryStage.setOpacity(0.75);
+      scene.getStylesheets().add("style.css");           
+      primaryStage.setScene(scene);
+      root.getChildren().addAll(vbox, sc);
+      primaryStage.show();
         
     }//end stage
-
 }//end makeApplication

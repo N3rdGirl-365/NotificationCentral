@@ -20,6 +20,22 @@ screen and will float at top layer of screen, meaning a user can always have acc
 notifications. The window will be slightly transperent, so that the user can still see most of their work 
 space while the notification central window is open.
 
+
+The structure for this project:
+ReadInCSV -- this code reads in 5 csv files with stock notifications. This code has no main method, but has 
+a getNotification(fileName) method
+NotificationButton -- this code uses a contructor to pass info to buttons: what icons they have, their 
+dimensions, what happens when I click it. It uses object oriented programming to make generic code for 
+building each button. The "click on action" method reads a notification from the button's csv file and keeps 
+canvas seperate from discord.
+MakeApplication -- this code builds the stage adn window for the notification central window. Thi is also 
+where the scroll bar and transparency is declared. This builds 5 buttons and uses the cinstructor from 
+NotificationCentral.
+To use this code, you need 5 icons sotried in the same folder as this ccode. You also need 5 csv files with 
+notifications seperated by commas, see current code for examles. Additionally, you need a photo as the 
+background for the window. 
+
+
 Link to project pages: https://n3rdgirl-365.github.io/
 
 

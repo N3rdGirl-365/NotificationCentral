@@ -29,7 +29,7 @@ public class NotificationButton extends Button implements EventHandler<ActionEve
    private boolean toggle = true;
    private String platformName;
          
-    
+   //constructor builds button with name, icon, and csv file   
    public NotificationButton(String platformName, String fileName, String csvFileName){
       super(platformName);
       String name = platformName;
@@ -42,7 +42,6 @@ public class NotificationButton extends Button implements EventHandler<ActionEve
       this.setOnAction(this);
       this.smallDimensions(this);
       notifications = readInCSV.getNotification(csvFileName); // read in noticiations for each button
-      
    }//end conctructor
     
    public void handle(ActionEvent event){
